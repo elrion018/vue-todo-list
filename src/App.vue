@@ -12,6 +12,13 @@
 import TodoInput from './components/TodoInput.vue';
 import TodoList from './components/TodoList.vue';
 
+const createTodo = function(trimmedTodoText, todoIdCount) {
+  return {
+    name: trimmedTodoText,
+    id: todoIdCount,
+  };
+};
+
 export default {
   name: 'App',
   components: {
@@ -22,6 +29,7 @@ export default {
   data() {
     return {
       newTodoText: '',
+      todoIdCount: 0,
       todos: [],
     };
   },
@@ -31,9 +39,10 @@ export default {
       const trimmedTodoText = this.newTodoText.trim();
 
       if (trimmedTodoText) {
-        this.todos.push(trimmedTodoText);
+        this.todos.push(createTodo(trimmedTodoText, this.todoIdCount));
       }
 
+      this.todoIdCount += 1;
       this.newTodoText = '';
     },
     updateNewTodoText($event) {

@@ -1,5 +1,5 @@
 <template>
-  <todo-row v-for="todo in todos" :todo="todo" :key="todo"></todo-row>
+  <todo-row v-for="todo in todos" :todo="todo" :key="todo.id"></todo-row>
 </template>
 
 <script>
