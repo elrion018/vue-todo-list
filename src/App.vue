@@ -1,17 +1,43 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png">
-  <HelloWorld msg="Welcome to Your Vue.js App"/>
+  <p>Todo List</p>
+  <todo-input
+    :newTodoText="newTodoText"
+    @update:newTodoText="newTodoText = $event"
+    @submit:newTodoText="addTodo"
+  ></todo-input>
+  <todo-list :todos="todos"></todo-list>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import TodoInput from './components/TodoInput.vue';
+import TodoList from './components/TodoList.vue';
 
 export default {
   name: 'App',
   components: {
-    HelloWorld
-  }
-}
+    TodoInput,
+    TodoList,
+  },
+
+  data() {
+    return {
+      newTodoText: '',
+      todos: [],
+    };
+  },
+
+  methods: {
+    addTodo() {
+      const trimmedTodoText = this.newTodoText.trim();
+
+      if (trimmedTodoText) {
+        this.todos.push(trimmedTodoText);
+      }
+
+      this.newTodoText = '';
+    },
+  },
+};
 </script>
 
 <style>
