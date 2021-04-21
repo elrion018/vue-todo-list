@@ -5,7 +5,7 @@
     @update:newTodoText="updateNewTodoText"
     @submit:newTodoText="addTodo"
   ></todo-input>
-  <todo-list :todos="todos"></todo-list>
+  <todo-list :todos="todos" @remove:todo="removeTodo"></todo-list>
 </template>
 
 <script>
@@ -45,6 +45,15 @@ export default {
       this.todoIdCount += 1;
       this.newTodoText = '';
     },
+
+    removeTodo(id) {
+      const targetIndex = this.todos.findIndex(todo => todo.id === id);
+
+      if (targetIndex !== -1) {
+        this.todos.splice(targetIndex, 1);
+      }
+    },
+
     updateNewTodoText($event) {
       this.newTodoText = $event;
     },

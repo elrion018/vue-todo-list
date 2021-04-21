@@ -1,5 +1,10 @@
 <template>
-  <todo-row v-for="todo in todos" :todo="todo" :key="todo.id"></todo-row>
+  <todo-row
+    v-for="todo in todos"
+    :todo="todo"
+    :key="todo.id"
+    @remove:todo="$emit('remove:todo', todo.id)"
+  ></todo-row>
 </template>
 
 <script>
@@ -9,6 +14,7 @@ export default {
   setup() {},
   name: 'TodoList',
   props: ['todos'],
+  emits: ['remove:todo'],
   components: { TodoRow },
 };
 </script>
