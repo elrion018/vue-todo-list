@@ -2,7 +2,7 @@
   <p>Todo List</p>
   <todo-input
     :newTodoText="newTodoText"
-    @update:newTodoText="newTodoText = $event"
+    @update:newTodoText="updateNewTodoText"
     @submit:newTodoText="addTodo"
   ></todo-input>
   <todo-list :todos="todos"></todo-list>
@@ -35,6 +35,9 @@ export default {
       }
 
       this.newTodoText = '';
+    },
+    updateNewTodoText($event) {
+      this.newTodoText = $event;
     },
   },
 };

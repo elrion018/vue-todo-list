@@ -1,11 +1,14 @@
 <template>
-  <li v-for="todo in todos" :key="todo">{{ todo }}</li>
+  <todo-row v-for="todo in todos" :todo="todo" :key="todo"></todo-row>
 </template>
 
 <script>
+import TodoRow from '../components/TodoRow.vue';
+
 export default {
   setup() {},
-  props: ['todos'],
   name: 'TodoList',
+  props: ['todos'],
+  components: { TodoRow },
 };
 </script>

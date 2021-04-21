@@ -10,8 +10,8 @@
 <script>
 export default {
   setup() {},
+  name: 'TodoInput',
   props: ['newTodoText'],
   emits: ['update:newTodoText', 'submit:newTodoText'],
-  name: 'TodoInput',
 };
 </script>
